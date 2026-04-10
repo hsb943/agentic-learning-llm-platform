@@ -29,7 +29,7 @@ End with a one-paragraph summary.
 Formatting rules:
 
 * Use short sections with headings
-* Use bullet points
+* Use bullet points, numbered bullet points 
 * Avoid long paragraphs
 * Avoid mixing multiple ideas in one paragraph
 * Use numbered steps when describing flow
