@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: learning-backend
+  labels:
+    app: learning-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: learning-backend
+  template:
+    metadata:
+      labels:
+        app: learning-backend
+    spec:
+      containers:
+        - name: learning-backend
+          image: "chiron-backend:latest"
+          imagePullPolicy: "IfNotPresent"
+          ports:
+            - containerPort: 8000
+              name: http
+          env:
+            - name: OPENAI_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: learning-backend-secrets
+                  key: "OPENAI_API_KEY"
+            - name: TAVILY_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: learning-backend-secrets
+                  key: "TAVILY_API_KEY"
+          readinessProbe:
+            httpGet:
+              path: /healthz
+              port: http
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: http
+            initialDelaySeconds: 15
+            periodSeconds: 20
+

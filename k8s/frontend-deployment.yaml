@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: learning-frontend
+  labels:
+    app: learning-frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: learning-frontend
+  template:
+    metadata:
+      labels:
+        app: learning-frontend
+    spec:
+      containers:
+        - name: learning-frontend
+          image: "chiron-frontend:latest"
+          imagePullPolicy: "IfNotPresent"
+          ports:
+            - containerPort: 80
+              name: http
+          env:
+            - name: BACKEND_UPSTREAM
+              value: "learning-backend:8000"
+          readinessProbe:
+            httpGet:
+              path: /
+              port: http
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /
+              port: http
+            initialDelaySeconds: 15
+            periodSeconds: 20
+

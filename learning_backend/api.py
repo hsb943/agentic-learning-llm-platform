@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import os
 from functools import lru_cache
 
 from fastapi import FastAPI, HTTPException
@@ -17,6 +18,16 @@ from .api_models import (
 from .manager import LearningAPIManager
 
 
+def _allowed_origins() -> list[str]:
+    default_origins = [
+        "http://localhost:5173",
+        "http://127.0.0.1:5173",
+    ]
+    configured = os.getenv("CORS_ALLOW_ORIGINS", "")
+    extra_origins = [origin.strip() for origin in configured.split(",") if origin.strip()]
+    return list(dict.fromkeys(default_origins + extra_origins))
+
+
 @lru_cache(maxsize=1)
 def get_manager() -> LearningAPIManager:
     """Build the workflow manager lazily on first use."""
@@ -30,10 +41,7 @@ def create_app() -> FastAPI:
     app = FastAPI(title="Learning Backend API", version="0.1.0")
     app.add_middleware(
         CORSMiddleware,
-        allow_origins=[
-            "http://localhost:5173",
-            "http://127.0.0.1:5173",
-        ],
+        allow_origins=_allowed_origins(),
         allow_credentials=True,
         allow_methods=["*"],
         allow_headers=["*"],

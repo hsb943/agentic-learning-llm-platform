@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: learning-backend
+  labels:
+    app: learning-backend
+spec:
+  selector:
+    app: learning-backend
+  ports:
+    - name: http
+      port: 8000
+      targetPort: http
+  type: ClusterIP
+
