@@ -5,6 +5,7 @@ from __future__ import annotations
 from functools import lru_cache
 
 from fastapi import FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 
 from .api_models import (
     ConfirmCheckpointsRequest,
@@ -27,6 +28,16 @@ def create_app() -> FastAPI:
     """Create the backend API app."""
 
     app = FastAPI(title="Learning Backend API", version="0.1.0")
+    app.add_middleware(
+        CORSMiddleware,
+        allow_origins=[
+            "http://localhost:5173",
+            "http://127.0.0.1:5173",
+        ],
+        allow_credentials=True,
+        allow_methods=["*"],
+        allow_headers=["*"],
+    )
 
     @app.get("/healthz", response_model=HealthResponse)
     def healthz() -> HealthResponse:

@@ -35,10 +35,12 @@ class LearningAPIManager:
     """Own the graph and expose session-friendly operations."""
 
     runtime: RuntimeDependencies = field(default_factory=build_runtime)
+    graph: object = field(init=False)
+    sessions: set[str] = field(init=False)
 
     def __post_init__(self) -> None:
         self.graph = build_learning_graph(self.runtime)
-        self.sessions: set[str] = set()
+        self.sessions = set()
 
     @staticmethod
     def _thread(thread_id: str) -> dict:
