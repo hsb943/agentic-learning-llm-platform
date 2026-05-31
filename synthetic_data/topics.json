@@ -1,0 +1,36 @@
+{
+  "topics": [
+    "Linear Algebra for Attention Mechanisms",
+    "Probability Theory in Language Modeling",
+    "Cross-Entropy Loss and Maximum Likelihood Training",
+    "Softmax Scaling and Numerical Stability",
+    "Vector Embeddings and Representation Learning",
+    "Positional Encoding: Sinusoidal, Learned, RoPE, and ALiBi",
+    "Query, Key, and Value (QKV) Projections",
+    "Scaled Dot-Product Attention Mechanism",
+    "Multi-Head Attention Architecture",
+    "Residual Connections and Layer Normalization",
+    "Feed-Forward Networks in Transformers",
+    "Self-Attention vs Cross-Attention",
+    "Transformer Training Dynamics and Gradient Flow",
+    "Overfitting, Regularization, and Dropout in Transformers",
+    "Scaling Laws and Model Capacity",
+    "Low-Rank Adaptation (LoRA) and PEFT Methods",
+    "Evaluation Metrics for Language Models (Perplexity, BLEU, etc.)",
+    "Tokenization Techniques (BPE, WordPiece, SentencePiece)",
+    "Encoder-Only vs Decoder-Only vs Encoder-Decoder Models",
+    "Causal Masking and Padding Masking",
+    "KV Cache for Autoregressive Inference",
+    "FlashAttention and Memory-Efficient Attention",
+    "Sparse and Linear Attention Variants",
+    "Grouped Query Attention (GQA) and Multi-Query Attention (MQA)",
+    "Mixed Precision Training (FP16, BF16)",
+    "Gradient Checkpointing and Memory Optimization",
+    "Parallelism Strategies (Data, Tensor, Pipeline)",
+    "Quantization Techniques (INT8, 4-bit, QLoRA)",
+    "Retrieval-Augmented Transformers (RAG)",
+    "Speculative Decoding and Efficient Inference Strategies"
+
+  ]
+}
+

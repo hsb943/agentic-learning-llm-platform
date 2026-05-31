@@ -1,0 +1,6 @@
+{
+  "run_id": "20260205_032455_1b177f",
+  "model": "publishers/google/models/gemini-2.5-flash",
+  "timestamp": "2026-02-05T03:24:55.054385",
+  "global_throttle": 1.5
+}
